@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import TaskInput from './TaskInput';
 import TaskList from './TaskList';
+import TaskDetails from './TaskDetails';
 import ProgressBar from './ProgressBar';
 import { useTasks } from '../hooks/useTasks';
 import styles from '../styles/styles';
@@ -10,7 +11,8 @@ const TaskManager = () => {
   const { 
     tasks, 
     task, 
-    setTask, 
+    setTask,
+    setTasks,
     addTask, 
     toggleTaskCompletion, 
     deleteTask,
@@ -25,6 +27,21 @@ const TaskManager = () => {
 
   const hasCompletedTasks = tasks.some(task => task.completed);
 
+  const [selectedTask, setSelectedTask] = useState(null);
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const handleTaskPress = (task) => {
+    setSelectedTask(task);
+    setModalVisible(true);
+  };
+
+  const updateTask = (updatedTask) => {
+    const newTasks = tasks.map(task => 
+      task.key === updatedTask.key ? updatedTask : task
+    );
+    setTasks(newTasks);
+  };
+
   return (
     <View style={{ width: '100%', flex: 1 }}>
       <TaskInput task={task} setTask={setTask} addTask={addTask} />
@@ -33,6 +50,13 @@ const TaskManager = () => {
         tasks={tasks} 
         toggleTaskCompletion={toggleTaskCompletion} 
         deleteTask={deleteTask} 
+        onTaskPress={handleTaskPress}
+      />
+      <TaskDetails
+        visible={modalVisible}
+        task={selectedTask}
+        onClose={() => setModalVisible(false)}
+        onUpdateTask={updateTask}
       />
       {hasCompletedTasks && (
         <TouchableOpacity 

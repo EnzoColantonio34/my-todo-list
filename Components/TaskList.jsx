@@ -2,7 +2,7 @@ import React from 'react';
 import { FlatList, View } from 'react-native';
 import TaskItem from './TaskItem';
 
-const TaskList = ({ tasks, toggleTaskCompletion, deleteTask }) => {
+const TaskList = ({ tasks, toggleTaskCompletion, deleteTask, onTaskPress }) => {
   return (
     <FlatList
       data={tasks}
@@ -11,6 +11,7 @@ const TaskList = ({ tasks, toggleTaskCompletion, deleteTask }) => {
           item={item}
           toggleTaskCompletion={toggleTaskCompletion}
           deleteTask={deleteTask}
+          onTaskPress={onTaskPress}
         />
       )}
       keyExtractor={item => item.key}

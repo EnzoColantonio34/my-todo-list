@@ -29,14 +29,22 @@ export const useTasks = () => {
     setShowButton(false);
   };
 
+  const updateTask = (updatedTask) => {
+    setTasks(tasks.map(task => 
+      task.key === updatedTask.key ? updatedTask : task
+    ));
+  };
+
   return {
     task,
     setTask,
     tasks,
+    setTasks,
     showButton,
     deleteTask,
     addTask,
     toggleTaskCompletion,
-    deleteCompletedTasks
+    deleteCompletedTasks,
+    updateTask
   };
 };
