@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, TextInput, FlatList, TouchableOpacity } from 'react-native';
-import { CheckBox } from 'react-native-elements';
+import { View, Text } from 'react-native';
+import TaskInput from './Components/TaskInput';
+import TaskList from './Components/TaskList';
 import styles from './styles/styles';
 
 export default function App() {
   const [task, setTask] = useState('');
   const [tasks, setTasks] = useState([]);
+
+  const deleteTask = (key) => {
+    setTasks(tasks.filter(task => task.key !== key));
+  };
 
   const addTask = () => {
     if (task.length > 0) {
@@ -24,31 +29,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Ma Todo List</Text>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Ajouter une tâche"
-          value={task}
-          onChangeText={setTask}
-        />
-        <TouchableOpacity style={styles.button} onPress={addTask}>
-          <Text style={styles.buttonText}>+</Text>
-        </TouchableOpacity>
-      </View>
-      <FlatList
-        data={tasks}
-        renderItem={({ item }) => (
-          <View style={styles.task}>
-            <CheckBox
-              checked={item.completed}
-              onPress={() => toggleTaskCompletion(item.key)}
-            />
-            <Text style={[styles.taskText, item.completed && styles.taskTextCompleted]}>
-              {item.value}
-            </Text>
-          </View>
-        )}
-      />
+      <TaskInput task={task} setTask={setTask} addTask={addTask} />
+      <TaskList tasks={tasks} toggleTaskCompletion={toggleTaskCompletion} deleteTask={deleteTask} />
       <StatusBar style="auto" />
     </View>
   );
