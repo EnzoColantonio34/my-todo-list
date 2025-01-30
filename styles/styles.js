@@ -12,7 +12,7 @@ export default StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    marginBottom: 50,
+    marginBottom: 20,
     color: '#333',
   },
   inputContainer: {
@@ -57,5 +57,42 @@ export default StyleSheet.create({
   taskTextCompleted: {
     textDecorationLine: 'line-through',
     color: '#d3d3d3',
+  },
+  floatingButton: {
+    position: 'absolute',
+    bottom: 30,
+    right: 30,
+    backgroundColor: '#007BFF',
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  floatingButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  deleteButton: {
+    position: 'absolute',
+    bottom: 100,
+    right: 10,
+    backgroundColor: '#dc3545',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 25,
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+  },
+  deleteButtonText: {
+    color: '#fff',
+    fontSize: 14,
+    fontWeight: 'bold',
   },
 });

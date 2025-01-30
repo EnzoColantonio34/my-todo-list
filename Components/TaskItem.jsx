@@ -7,7 +7,8 @@ import { confirmDeleteTask } from './TaskDelete';
 const TaskItem = ({ item, toggleTaskCompletion, deleteTask }) => {
   return (
     <TouchableOpacity
-      onLongPress={() => confirmDeleteTask(item.key, deleteTask)} // 
+      onLongPress={() => confirmDeleteTask(item.key, deleteTask)}
+      onPress={() => toggleTaskCompletion(item.key)}
       style={styles.task}
     >
       <CheckBox

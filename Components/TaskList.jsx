@@ -14,7 +14,6 @@ const TaskList = ({ tasks, toggleTaskCompletion, deleteTask }) => {
         />
       )}
       keyExtractor={item => item.key}
-      ItemSeparatorComponent={() => <View style={{ height: 0 }} />}
     />
   );
 };
