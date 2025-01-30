@@ -7,7 +7,7 @@ import styles from './styles/styles';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Ma Todo List</Text>
+      <Text style={styles.title}>Ma ✨Todo List✨</Text>
       <TaskManager />
       <StatusBar style="auto" />
     </View>
