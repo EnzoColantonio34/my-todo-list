@@ -7,12 +7,12 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     padding: 20,
-    paddingTop: 60,
+    paddingTop: 100,
   },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 50,
     color: '#333',
   },
   inputContainer: {
@@ -46,7 +46,6 @@ export default StyleSheet.create({
   task: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 10,
     paddingHorizontal: 15,
     fontSize: 18,
     width: '100%',

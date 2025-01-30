@@ -10,7 +10,7 @@ const TaskList = ({ tasks, toggleTaskCompletion, deleteTask }) => {
         <TaskItem
           item={item}
           toggleTaskCompletion={toggleTaskCompletion}
-          deleteTask={deleteTask} 
+          deleteTask={deleteTask}
         />
       )}
       keyExtractor={item => item.key}
