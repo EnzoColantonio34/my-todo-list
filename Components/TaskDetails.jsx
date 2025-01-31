@@ -98,7 +98,7 @@ const TaskDetails = ({
 
           <Text style={styles.modalLabel}>Statut</Text>
           <Text style={styles.modalText}>
-            {task.completed ? 'Terminée' : 'En cours'}
+            {task.completed ? 'Terminée ✅' : 'À faire ⌛'}
           </Text>
         </View>
       </View>

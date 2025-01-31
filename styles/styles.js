@@ -1,6 +1,12 @@
 import { StyleSheet } from 'react-native';
 
+/**
+ * Styles for the My-Todo-List application.
+ */
 export default StyleSheet.create({
+  /**
+   * Container style for the main layout.
+   */
   container: {
     flex: 1,
     backgroundColor: '#fffefc',
@@ -9,21 +15,27 @@ export default StyleSheet.create({
     padding: 20,
     paddingTop: 100,
   },
+  /**
+   * Style for the title text.
+   */
   title: {
     fontSize: 28,
     fontWeight: 'bold',
     marginBottom: 20,
     color: '#333',
   },
-
-
-  // =============== Input texte =============== 
+  /**
+   * Container style for the input section.
+   */
   inputContainer: {
     flexDirection: 'row',
     padding: 10,
     alignItems: 'center',
     backgroundColor: '#fff',
   },
+  /**
+   * Style for the input field.
+   */
   input: {
     flex: 1,
     height: 40,
@@ -35,9 +47,9 @@ export default StyleSheet.create({
     fontSize: 16,
     backgroundColor: '#fff',
   },
-
-
-  // =============== Bouton "+" (créer une tâche) =============== 
+  /**
+   * Style for the button.
+   */
   button: {
     backgroundColor: '#007BFF',
     width: 50,
@@ -47,11 +59,17 @@ export default StyleSheet.create({
     justifyContent: 'center',
     marginLeft: 10,
   },
+  /**
+   * Style for the button text.
+   */
   buttonText: {
     color: '#fff',
     fontSize: 24,
     fontWeight: 'bold',
   },
+  /**
+   * Style for each task item.
+   */
   task: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -59,14 +77,23 @@ export default StyleSheet.create({
     fontSize: 18,
     width: '100%',
   },
+  /**
+   * Style for the task text.
+   */
   taskText: {
     marginLeft: 10,
     fontSize: 18,
   },
+  /**
+   * Style for completed task text.
+   */
   taskTextCompleted: {
     textDecorationLine: 'line-through',
     color: '#d3d3d3',
   },
+  /**
+   * Style for the floating button.
+   */
   floatingButton: {
     position: 'absolute',
     bottom: 30,
@@ -78,14 +105,17 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
-
-  // =============== Bouton "Supprimer" =============== 
+  /**
+   * Style for the floating button text.
+   */
   floatingButtonText: {
     color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
   },
+  /**
+   * Style for the delete button.
+   */
   deleteButton: {
     position: 'absolute',
     bottom: 30,
@@ -97,53 +127,62 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 5,
-    // shadowColor: '#000',
-    // shadowOffset: { width: 0, height: 2 },
-    // shadowOpacity: 0.25,
-    // shadowRadius: 3.84,
   },
+  /**
+   * Style for the delete button text.
+   */
   deleteButtonText: {
     color: '#fff',
     fontSize: 14,
     fontWeight: 'bold',
   },
-
-
-  // =============== Barre de progression (ProgressBar) =============== 
+  /**
+   * Wrapper style for the progress bar.
+   */
   progressWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: '100%',
-    marginTop: 10,
-    marginBottom: 20,
+    padding: 10,
   },
+  /**
+   * Container style for the progress bar.
+   */
   progressContainer: {
     flex: 1,
-    height: 5,
+    height: 8,
     backgroundColor: '#f0f0f0',
     borderRadius: 5,
     overflow: 'hidden',
     marginRight: 10,
   },
+  /**
+   * Style for the progress bar.
+   */
   progressBar: {
     height: '100%',
-    backgroundColor: 'rgb(30, 200, 98)',
+    backgroundColor: '#4CAF50',
     borderRadius: 5,
   },
+  /**
+   * Style for the progress text.
+   */
   progressText: {
     fontSize: 14,
-    fontWeight: 'bold',
-    color: 'rgb(30, 200, 98)',
+    color: '#666',
     minWidth: 40,
   },
-
-  // =============== Page Détails d'une tâche =============== 
+  /**
+   * Container style for the modal.
+   */
   modalContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
+  /**
+   * Content style for the modal.
+   */
   modalContent: {
     backgroundColor: 'white',
     borderRadius: 20,
@@ -156,42 +195,66 @@ export default StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
+  /**
+   * Style for the modal title.
+   */
   modalTitle: {
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 15,
     marginTop: 100,
   },
+  /**
+   * Style for the modal text.
+   */
   modalText: {
     fontSize: 16,
     marginBottom: 10,
   },
+  /**
+   * Style for the modal button.
+   */
   modalButton: {
     backgroundColor: '#007BFF',
     padding: 10,
     borderRadius: 10,
     marginTop: 10,
   },
+  /**
+   * Style for the modal button text.
+   */
   modalButtonText: {
     color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
   },
+  /**
+   * Style for the full-screen modal.
+   */
   modalFullScreen: {
     flex: 1,
     backgroundColor: 'white',
   },
+  /**
+   * Style for the modal header.
+   */
   modalHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 20,
+    padding: 15,
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
   },
+  /**
+   * Style for the modal body.
+   */
   modalBody: {
-    padding: 25,
+    padding: 15,
   },
+  /**
+   * Style for the modal label.
+   */
   modalLabel: {
     fontSize: 16,
     fontWeight: 'bold',
@@ -199,23 +262,38 @@ export default StyleSheet.create({
     color: '#666',
     marginTop: 20,
   },
+  /**
+   * Style for the close button.
+   */
   closeButton: {
     padding: 10,
   },
+  /**
+   * Style for the close button text.
+   */
   closeButtonText: {
     fontSize: 24,
     color: '#666',
   },
+  /**
+   * Style for the date button.
+   */
   dateButton: {
     backgroundColor: '#f0f0f0',
     padding: 15,
     borderRadius: 10,
     marginTop: 10,
   },
+  /**
+   * Style for the date button text.
+   */
   dateButtonText: {
     fontSize: 16,
     color: '#333',
   },
+  /**
+   * Style for the description input field.
+   */
   descriptionInput: {
     borderWidth: 1,
     borderColor: '#ddd',
@@ -223,19 +301,28 @@ export default StyleSheet.create({
     padding: 10,
     marginVertical: 10,
     minHeight: 100,
-    textAlignVertical: 'top'
+    textAlignVertical: 'top',
   },
+  /**
+   * Container style for the deadline section.
+   */
   deadlineContainer: {
     marginTop: 20,
     marginBottom: 10,
   },
+  /**
+   * Style for the title input field.
+   */
   titleInput: {
     backgroundColor: '#f0f0f0',
-    borderRadius: 8,
+    borderRadius: 10,
     padding: 10,
     marginTop: 5,
     fontSize: 16,
   },
+  /**
+   * Style for the add button.
+   */
   addButton: {
     width: 40,
     height: 40,
@@ -244,6 +331,9 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  /**
+   * Style for the add button text.
+   */
   addButtonText: {
     color: '#fff',
     fontSize: 24,

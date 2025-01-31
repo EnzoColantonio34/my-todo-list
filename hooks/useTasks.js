@@ -86,7 +86,7 @@ export const useTasks = () => {
     updateTask,
     toggleTaskCompletion, 
     deleteTask,
-    deleteCompletedTasks, // Ajout de la fonction
+    deleteCompletedTasks,
     loadTasks
   };
 };
