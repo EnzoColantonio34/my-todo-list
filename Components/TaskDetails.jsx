@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, View, Text, TouchableOpacity, Platform, TextInput } from 'react-native';
+import { Modal, View, Text, TouchableOpacity, Platform, TextInput, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import styles from '../styles/styles';
@@ -61,47 +61,49 @@ const TaskDetails = ({
       animationType="slide"
       presentationStyle="fullScreen"
     >
-      <View style={styles.modalFullScreen}>
-        <View style={styles.modalHeader}>
-          <Text style={styles.modalTitle}>Détails de la tâche</Text>
-          <TouchableOpacity onPress={onClose} style={styles.closeButton}>
-            <Text style={styles.closeButtonText}>✕</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.modalBody}>
-          <Text style={styles.modalLabel}>Tâche</Text>
-          {editingTitle ? (
-            <TextInput
-              style={styles.titleInput}
-              value={taskTitle}
-              onChangeText={setTaskTitle}
-              onBlur={handleTitleSubmit}
-              onSubmitEditing={handleTitleSubmit}
-              autoFocus
-            />
-          ) : (
-            <TouchableOpacity onPress={() => setEditingTitle(true)}>
-              <Text style={styles.modalText}>{taskTitle}</Text>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.modalFullScreen}>
+          <View style={styles.modalHeader}>
+            <Text style={styles.modalTitle}>Détails de la tâche</Text>
+            <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+              <Text style={styles.closeButtonText}>✕</Text>
             </TouchableOpacity>
-          )}
+          </View>
 
-          <Text style={styles.modalLabel}>Description</Text>
-          <TextInput
-            style={styles.descriptionInput}
-            multiline
-            numberOfLines={4}
-            value={description}
-            onChangeText={handleDescriptionChange}
-            placeholder="Ajouter une description..."
-          />
+          <View style={styles.modalBody}>
+            <Text style={styles.modalLabel}>Tâche</Text>
+            {editingTitle ? (
+              <TextInput
+                style={styles.titleInput}
+                value={taskTitle}
+                onChangeText={setTaskTitle}
+                onBlur={handleTitleSubmit}
+                onSubmitEditing={handleTitleSubmit}
+                autoFocus
+              />
+            ) : (
+              <TouchableOpacity onPress={() => setEditingTitle(true)}>
+                <Text style={styles.modalText}>{taskTitle}</Text>
+              </TouchableOpacity>
+            )}
 
-          <Text style={styles.modalLabel}>Statut</Text>
-          <Text style={styles.modalText}>
-            {task.completed ? 'Terminée ✅' : 'À faire ⌛'}
-          </Text>
+            <Text style={styles.modalLabel}>Description</Text>
+            <TextInput
+              style={styles.descriptionInput}
+              multiline
+              numberOfLines={4}
+              value={description}
+              onChangeText={handleDescriptionChange}
+              placeholder="Ajouter une description..."
+            />
+
+            <Text style={styles.modalLabel}>Statut</Text>
+            <Text style={styles.modalText}>
+              {task.completed ? 'Terminée ✅' : 'À faire ⌛'}
+            </Text>
+          </View>
         </View>
-      </View>
+      </TouchableWithoutFeedback>
     </Modal>
   );
 };
