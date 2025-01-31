@@ -1,12 +1,7 @@
 import { StyleSheet } from 'react-native';
 
-/**
- * Styles for the My-Todo-List application.
- */
 export default StyleSheet.create({
-  /**
-   * Container style for the main layout.
-   */
+  // Style du conteneur principal de l'application
   container: {
     flex: 1,
     backgroundColor: '#fffefc',
@@ -15,27 +10,24 @@ export default StyleSheet.create({
     padding: 20,
     paddingTop: 100,
   },
-  /**
-   * Style for the title text.
-   */
+
+  // Style du titre principal
   title: {
     fontSize: 28,
     fontWeight: 'bold',
     marginBottom: 20,
     color: '#333',
   },
-  /**
-   * Container style for the input section.
-   */
+
+  // Conteneur pour la zone de saisie des tâches
   inputContainer: {
     flexDirection: 'row',
     padding: 10,
     alignItems: 'center',
     backgroundColor: '#fff',
   },
-  /**
-   * Style for the input field.
-   */
+
+  // Style du champ de saisie
   input: {
     flex: 1,
     height: 40,
@@ -47,29 +39,8 @@ export default StyleSheet.create({
     fontSize: 16,
     backgroundColor: '#fff',
   },
-  /**
-   * Style for the button.
-   */
-  button: {
-    backgroundColor: '#007BFF',
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: 10,
-  },
-  /**
-   * Style for the button text.
-   */
-  buttonText: {
-    color: '#fff',
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  /**
-   * Style for each task item.
-   */
+
+  // Style d'une tâche individuelle dans la liste
   task: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -77,45 +48,20 @@ export default StyleSheet.create({
     fontSize: 18,
     width: '100%',
   },
-  /**
-   * Style for the task text.
-   */
+
+  // Style du texte d'une tâche
   taskText: {
     marginLeft: 10,
     fontSize: 18,
   },
-  /**
-   * Style for completed task text.
-   */
+
+  // Style du texte pour une tâche complétée
   taskTextCompleted: {
     textDecorationLine: 'line-through',
     color: '#d3d3d3',
   },
-  /**
-   * Style for the floating button.
-   */
-  floatingButton: {
-    position: 'absolute',
-    bottom: 30,
-    right: 30,
-    backgroundColor: '#007BFF',
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  /**
-   * Style for the floating button text.
-   */
-  floatingButtonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  /**
-   * Style for the delete button.
-   */
+
+  // Style du bouton de suppression des tâches complétées
   deleteButton: {
     position: 'absolute',
     bottom: 30,
@@ -128,25 +74,22 @@ export default StyleSheet.create({
     justifyContent: 'center',
     elevation: 5,
   },
-  /**
-   * Style for the delete button text.
-   */
+
+  // Style du texte du bouton de suppression
   deleteButtonText: {
     color: '#fff',
     fontSize: 14,
     fontWeight: 'bold',
   },
-  /**
-   * Wrapper style for the progress bar.
-   */
+
+  // Conteneur de la barre de progression
   progressWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
     padding: 10,
   },
-  /**
-   * Container style for the progress bar.
-   */
+
+  // Style du conteneur externe de la barre de progression
   progressContainer: {
     flex: 1,
     height: 8,
@@ -155,89 +98,28 @@ export default StyleSheet.create({
     overflow: 'hidden',
     marginRight: 10,
   },
-  /**
-   * Style for the progress bar.
-   */
+
+  // Style de la barre de progression elle-même
   progressBar: {
     height: '100%',
     backgroundColor: '#4CAF50',
     borderRadius: 5,
   },
-  /**
-   * Style for the progress text.
-   */
+
+  // Style du texte indiquant le pourcentage de progression
   progressText: {
     fontSize: 14,
     color: '#666',
     minWidth: 40,
   },
-  /**
-   * Container style for the modal.
-   */
-  modalContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  },
-  /**
-   * Content style for the modal.
-   */
-  modalContent: {
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 20,
-    width: '80%',
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  /**
-   * Style for the modal title.
-   */
-  modalTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 15,
-    marginTop: 100,
-  },
-  /**
-   * Style for the modal text.
-   */
-  modalText: {
-    fontSize: 16,
-    marginBottom: 10,
-  },
-  /**
-   * Style for the modal button.
-   */
-  modalButton: {
-    backgroundColor: '#007BFF',
-    padding: 10,
-    borderRadius: 10,
-    marginTop: 10,
-  },
-  /**
-   * Style for the modal button text.
-   */
-  modalButtonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  /**
-   * Style for the full-screen modal.
-   */
+
+  // Style de la modale en plein écran
   modalFullScreen: {
     flex: 1,
     backgroundColor: 'white',
   },
-  /**
-   * Style for the modal header.
-   */
+
+  // Style de l'en-tête de la modale
   modalHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -246,15 +128,21 @@ export default StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
   },
-  /**
-   * Style for the modal body.
-   */
+
+  // Style du corps de la modale
   modalBody: {
     padding: 15,
   },
-  /**
-   * Style for the modal label.
-   */
+
+  // Style du titre dans la modale
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 15,
+    marginTop: 100,
+  },
+
+  // Style des étiquettes dans la modale
   modalLabel: {
     fontSize: 16,
     fontWeight: 'bold',
@@ -262,38 +150,34 @@ export default StyleSheet.create({
     color: '#666',
     marginTop: 20,
   },
-  /**
-   * Style for the close button.
-   */
+
+  // Style du texte dans la modale
+  modalText: {
+    fontSize: 16,
+    marginBottom: 10,
+  },
+
+  // Style du bouton de fermeture
   closeButton: {
     padding: 10,
   },
-  /**
-   * Style for the close button text.
-   */
+
+  // Style du texte du bouton de fermeture
   closeButtonText: {
     fontSize: 24,
     color: '#666',
   },
-  /**
-   * Style for the date button.
-   */
-  dateButton: {
+
+  // Style du champ de saisie du titre
+  titleInput: {
     backgroundColor: '#f0f0f0',
-    padding: 15,
     borderRadius: 10,
-    marginTop: 10,
-  },
-  /**
-   * Style for the date button text.
-   */
-  dateButtonText: {
+    padding: 10,
+    marginTop: 5,
     fontSize: 16,
-    color: '#333',
   },
-  /**
-   * Style for the description input field.
-   */
+
+  // Style du champ de saisie de la description
   descriptionInput: {
     borderWidth: 1,
     borderColor: '#ddd',
@@ -303,26 +187,8 @@ export default StyleSheet.create({
     minHeight: 100,
     textAlignVertical: 'top',
   },
-  /**
-   * Container style for the deadline section.
-   */
-  deadlineContainer: {
-    marginTop: 20,
-    marginBottom: 10,
-  },
-  /**
-   * Style for the title input field.
-   */
-  titleInput: {
-    backgroundColor: '#f0f0f0',
-    borderRadius: 10,
-    padding: 10,
-    marginTop: 5,
-    fontSize: 16,
-  },
-  /**
-   * Style for the add button.
-   */
+
+  // Style du bouton d'ajout
   addButton: {
     width: 40,
     height: 40,
@@ -331,9 +197,8 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  /**
-   * Style for the add button text.
-   */
+
+  // Style du texte du bouton d'ajout
   addButtonText: {
     color: '#fff',
     fontSize: 24,
