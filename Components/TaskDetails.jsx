@@ -4,7 +4,13 @@ import { CheckBox } from 'react-native-elements';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import styles from '../styles/styles';
 
-const TaskDetails = ({ visible, task, onClose, onUpdateTask }) => {
+const TaskDetails = ({ 
+  visible = false, 
+  task = null, 
+  onClose = () => {}, 
+  onUpdateTask = () => {},
+  textElement = ''
+}) => {
   const [date, setDate] = useState(new Date());
   const [showPicker, setShowPicker] = useState(false);
   const [description, setDescription] = useState('');
@@ -15,6 +21,7 @@ const TaskDetails = ({ visible, task, onClose, onUpdateTask }) => {
   useEffect(() => {
     if (task) {
       setTaskTitle(task.value);
+      setDescription(task.description || '');
     }
   }, [task]);
 
@@ -28,6 +35,21 @@ const TaskDetails = ({ visible, task, onClose, onUpdateTask }) => {
     setEditingTitle(false);
     if (onUpdateTask) {
       onUpdateTask({ ...task, value: taskTitle });
+    }
+  };
+
+  const handleDeadlineChange = () => {
+    const newHasDeadline = !hasDeadline;
+    setHasDeadline(newHasDeadline);
+    if (newHasDeadline) {
+      setShowPicker(true);
+    }
+  };
+
+  const handleDescriptionChange = (text) => {
+    setDescription(text);
+    if (task) {
+      onUpdateTask({ ...task, description: text });
     }
   };
 
@@ -70,7 +92,7 @@ const TaskDetails = ({ visible, task, onClose, onUpdateTask }) => {
             multiline
             numberOfLines={4}
             value={description}
-            onChangeText={setDescription}
+            onChangeText={handleDescriptionChange}
             placeholder="Ajouter une description..."
           />
 
@@ -78,37 +100,6 @@ const TaskDetails = ({ visible, task, onClose, onUpdateTask }) => {
           <Text style={styles.modalText}>
             {task.completed ? 'Terminée' : 'En cours'}
           </Text>
-
-          <View style={styles.deadlineContainer}>
-            <CheckBox
-              checked={hasDeadline}
-              onPress={() => setHasDeadline(!hasDeadline)}
-              title="Définir une date limite"
-            />
-          </View>
-
-          {hasDeadline && (
-            <>
-              <Text style={styles.modalLabel}>Date limite</Text>
-              <TouchableOpacity 
-                style={styles.dateButton}
-                onPress={() => setShowPicker(true)}
-              >
-                <Text style={styles.dateButtonText}>
-                  {date.toLocaleDateString()}
-                </Text>
-              </TouchableOpacity>
-            </>
-          )}
-
-          {showPicker && (
-            <DateTimePicker
-              value={date}
-              mode="date"
-              onChange={onChange}
-              minimumDate={new Date()}
-            />
-          )}
         </View>
       </View>
     </Modal>

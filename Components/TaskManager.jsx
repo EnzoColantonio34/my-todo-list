@@ -12,11 +12,11 @@ const TaskManager = () => {
     tasks, 
     task, 
     setTask,
-    setTasks,
     addTask, 
-    toggleTaskCompletion, 
+    updateTask,
+    toggleTaskCompletion,
     deleteTask,
-    deleteCompletedTasks 
+    deleteCompletedTasks
   } = useTasks();
 
   const calculateProgress = () => {
@@ -35,13 +35,6 @@ const TaskManager = () => {
     setModalVisible(true);
   };
 
-  const updateTask = (updatedTask) => {
-    const newTasks = tasks.map(task => 
-      task.key === updatedTask.key ? updatedTask : task
-    );
-    setTasks(newTasks);
-  };
-
   return (
     <View style={{ width: '100%', flex: 1 }}>
       <TaskInput task={task} setTask={setTask} addTask={addTask} />
@@ -57,13 +50,16 @@ const TaskManager = () => {
         task={selectedTask}
         onClose={() => setModalVisible(false)}
         onUpdateTask={updateTask}
+        textElement
       />
       {hasCompletedTasks && (
         <TouchableOpacity 
           style={styles.deleteButton}
-          onPress={deleteCompletedTasks}
+          onPress={() => deleteCompletedTasks()}
         >
-          <Text style={styles.deleteButtonText}>Supprimer les tâches terminées</Text>
+          <Text style={styles.deleteButtonText}>
+            Supprimer les tâches terminées
+          </Text>
         </TouchableOpacity>
       )}
     </View>

@@ -20,16 +20,19 @@ export default StyleSheet.create({
   // =============== Input texte =============== 
   inputContainer: {
     flexDirection: 'row',
+    padding: 10,
     alignItems: 'center',
-    marginBottom: 10,
-    width: '100%',
+    backgroundColor: '#fff',
   },
   input: {
     flex: 1,
-    padding: 15,
-    borderColor: '#ddd',
+    height: 40,
     borderWidth: 1,
-    borderRadius: 25,
+    borderColor: '#ddd',
+    borderRadius: 20,
+    paddingHorizontal: 15,
+    marginRight: 10,
+    fontSize: 16,
     backgroundColor: '#fff',
   },
 
@@ -214,13 +217,13 @@ export default StyleSheet.create({
     color: '#333',
   },
   descriptionInput: {
-    backgroundColor: '#f0f0f0',
-    borderRadius: 10,
-    padding: 15,
-    marginTop: 10,
-    marginBottom: 10,
-    textAlignVertical: 'top',
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 8,
+    padding: 10,
+    marginVertical: 10,
     minHeight: 100,
+    textAlignVertical: 'top'
   },
   deadlineContainer: {
     marginTop: 20,
@@ -232,5 +235,18 @@ export default StyleSheet.create({
     padding: 10,
     marginTop: 5,
     fontSize: 16,
+  },
+  addButton: {
+    width: 40,
+    height: 40,
+    backgroundColor: '#007AFF',
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  addButtonText: {
+    color: '#fff',
+    fontSize: 24,
+    fontWeight: 'bold',
   },
 });
