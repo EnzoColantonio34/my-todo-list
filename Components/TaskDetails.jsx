@@ -1,34 +1,55 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, View, Text, TouchableOpacity, Platform, TextInput, Keyboard, TouchableWithoutFeedback } from 'react-native';
-import { CheckBox } from 'react-native-elements';
+import { Modal, View, Text, TouchableOpacity, Platform, TextInput, Keyboard, TouchableWithoutFeedback, Switch } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from '../styles/styles';
 
 const TaskDetails = ({ 
   visible = false, 
   task = null, 
   onClose = () => {}, 
-  onUpdateTask = () => {},
-  textElement = ''
+  onUpdateTask = () => {}
 }) => {
-  const [date, setDate] = useState(new Date());
-  const [showPicker, setShowPicker] = useState(false);
-  const [description, setDescription] = useState('');
-  const [hasDeadline, setHasDeadline] = useState(false);
+  const [description, setDescription] = useState(task ? task.description : '');
   const [editingTitle, setEditingTitle] = useState(false);
-  const [taskTitle, setTaskTitle] = useState('');
+  const [taskTitle, setTaskTitle] = useState(task ? task.value : '');
+  const [isSwitchOn, setIsSwitchOn] = useState(false);
+  const [deadline, setDeadline] = useState(null);
 
   useEffect(() => {
     if (task) {
       setTaskTitle(task.value);
-      setDescription(task.description || '');
+      setDescription(task.description);
     }
   }, [task]);
 
-  const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate || date;
-    setShowPicker(Platform.OS === 'ios');
-    setDate(currentDate);
+  useEffect(() => {
+    const loadSettings = async () => {
+      try {
+        const savedDeadline = await AsyncStorage.getItem('taskDeadline');
+        const savedSwitchState = await AsyncStorage.getItem('switchState');
+        if (savedDeadline !== null) {
+          setDeadline(new Date(savedDeadline));
+        }
+        if (savedSwitchState !== null) {
+          setIsSwitchOn(JSON.parse(savedSwitchState));
+        }
+      } catch (error) {
+        console.error('Failed to load settings.', error);
+      }
+    };
+    loadSettings();
+  }, []);
+
+  const handleDateChange = async (event, selectedDate) => {
+    if (selectedDate) {
+      setDeadline(selectedDate);
+      try {
+        await AsyncStorage.setItem('taskDeadline', selectedDate.toISOString());
+      } catch (error) {
+        console.error('Failed to save the deadline.', error);
+      }
+    }
   };
 
   const handleTitleSubmit = () => {
@@ -38,18 +59,23 @@ const TaskDetails = ({
     }
   };
 
-  const handleDeadlineChange = () => {
-    const newHasDeadline = !hasDeadline;
-    setHasDeadline(newHasDeadline);
-    if (newHasDeadline) {
-      setShowPicker(true);
-    }
-  };
-
   const handleDescriptionChange = (text) => {
     setDescription(text);
     if (task) {
       onUpdateTask({ ...task, description: text });
+    }
+  };
+
+  const toggleSwitch = async () => {
+    const newSwitchState = !isSwitchOn;
+    setIsSwitchOn(newSwitchState);
+    if (!newSwitchState) {
+      setDeadline(null);
+    }
+    try {
+      await AsyncStorage.setItem('switchState', JSON.stringify(newSwitchState));
+    } catch (error) {
+      console.error('Failed to save switch state.', error);
     }
   };
 
@@ -71,7 +97,7 @@ const TaskDetails = ({
           </View>
 
           <View style={styles.modalBody}>
-            <Text style={styles.modalLabel}>Tâche</Text>
+            <Text style={styles.modalLabel}>Nom de la tâche</Text>
             {editingTitle ? (
               <TextInput
                 style={styles.titleInput}
@@ -96,6 +122,30 @@ const TaskDetails = ({
               onChangeText={handleDescriptionChange}
               placeholder="Ajouter une description..."
             />
+
+            <View style={styles.labelSwitchContainer}>
+              <Text style={styles.modalLabel}>Date limite</Text>
+              <Switch
+                onValueChange={toggleSwitch}
+                value={isSwitchOn}
+                style={styles.switchContainer}
+              />
+            </View>
+
+            {isSwitchOn && (
+              <>
+                <Text style={styles.modalText}>Sélectionnez une date limite pour cette tâche.</Text>
+                <DateTimePicker
+                  value={deadline || new Date()}
+                  mode="date"
+                  display="default"
+                  onChange={handleDateChange}
+                />
+                <Text style={styles.selectedDateText}>
+                  Date sélectionnée: {deadline ? deadline.toLocaleDateString() : 'Aucune date sélectionnée'}
+                </Text>
+              </>
+            )}
 
             <Text style={styles.modalLabel}>Statut</Text>
             <Text style={styles.modalText}>

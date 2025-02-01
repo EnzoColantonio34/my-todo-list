@@ -144,7 +144,7 @@ export default StyleSheet.create({
 
   // Style des étiquettes dans la modale
   modalLabel: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
     color: '#666',
@@ -153,7 +153,7 @@ export default StyleSheet.create({
 
   // Style du texte dans la modale
   modalText: {
-    fontSize: 16,
+    fontSize: 18,
     marginBottom: 10,
   },
 
@@ -186,6 +186,7 @@ export default StyleSheet.create({
     marginVertical: 10,
     minHeight: 100,
     textAlignVertical: 'top',
+    fontSize: 16,
   },
 
   // Style du bouton d'ajout
@@ -203,5 +204,27 @@ export default StyleSheet.create({
     color: '#fff',
     fontSize: 24,
     fontWeight: 'bold',
+  },
+
+  // Style pour le conteneur du label et du switch
+  labelSwitchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start', 
+    marginVertical: 8,
+  },
+
+  // Style pour le conteneur du Switch
+  switchContainer: {
+    transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }], 
+    marginLeft: 5,
+  },
+
+  // Style pour le texte de la date sélectionnée
+  selectedDateText: {
+    fontSize: 16,
+    color: '#666',
+    marginTop: 10,
+    marginLeft: 10, // Added marginLeft to place it to the right of showdatepicker
   },
 });
