@@ -136,7 +136,7 @@ export default StyleSheet.create({
 
   // Style du titre dans la modale
   modalTitle: {
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: 'bold',
     marginBottom: 15,
     marginTop: 100,
